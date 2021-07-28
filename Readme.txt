@@ -20,15 +20,9 @@ Update-Database -Context Property_Sales_DatabaseContext
 User : admin@property.com
 Password: 1qaz2wsX@
 
-8. Also you can login with the following credentials to visit the site as a buyer
- will be only able to the propertie and confirm a sale
+8 You can sign up as a new buyer using the sign up Buyer link 
 
- User : james@property.com
-Password: 1qaz2wsX@
-
-9 You can sign up as a new buyer using the sign up Buyer link 
-
-10 if you need to create another  admin login with the admin credentials on step 7 above and
+9 if you need to create another  admin login with the admin credentials on step 7 above and
 Click in "Register proprty admin"  to register a new admin 
 
 
