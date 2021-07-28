@@ -1,0 +1,30 @@
+﻿@model Property_Sales_Final_Project.Models.SalesTransaction
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4 style="font-family:'Lucida Calligraphy'">Sales Transaction Detail</h4>
+    <hr />
+    <dl class="row" style="font-family:'Comic Sans MS'">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Buyer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Buyer.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Property)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Property.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-success">Back</a>
+</div>

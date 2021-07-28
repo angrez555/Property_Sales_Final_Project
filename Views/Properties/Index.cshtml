@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Property_Sales_Final_Project.Models.Property>
+
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1  style="font-family:'Lucida Calligraphy';">Registered Properties</h1>
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("properyAdmin"))
+{
+    <p>
+        <a class="btn btn-outline-primary" asp-action="Create">Register New Property</a>
+    </p>
+}
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-lg-3" style="margin:10px;">
+            <div class="card card align-text-bottom btn-group-lg border-success mb-3" style="width: 18rem; padding:24px;">
+                <div class="card-body">
+                   
+                        <h5 class="card-title" style="font-family:'Comic Sans MS';"> @Html.DisplayFor(modelItem => item.Title)</h5>
+                    
+                            <h6 class="card-subtitle mb-2 text-muted" style="font-family:'Comic Sans MS'">Address : @Html.DisplayFor(modelItem => item.Address)</h6>
+                            <p class="card-text" style="font-family:'Comic Sans MS';">
+                                Price :    @Html.DisplayFor(modelItem => item.SellingPrice)
+
+                            </p>
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole("properyAdmin"))
+                            {
+                                <a class="btn btn-outline-info" style="padding:9px; padding-bottom:5px;"  href="/Properties/Edit/@item.Id">Update Property</a>
+                                <a class="btn btn-outline-warning" style="padding:7px;" href="/Properties/Details/@item.Id">Detail</a>
+                                <a class="btn btn-outline-danger" style="padding-top:5px;" href="/Properties/Delete/@item.Id" >Remove</a>
+                            }
+                            else if (SignInManager.IsSignedIn(User) && User.IsInRole("buyer"))
+                            {
+
+                                <a class="btn btn-outline-primary" href="/Properties/Details/@item.Id">Buy Property</a>
+                            }
+</div>
+            </div>
+        </div>
+    }
+</div>
